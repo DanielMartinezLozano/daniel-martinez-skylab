@@ -39,16 +39,20 @@ class Quiz {
         return array;
     }
       
-    checkAnswer(option, correctSong){
+    checkAnswer(option, correctSong, spotifyStore){
         if (option === correctSong){
+            spotifyStore.addPoint()
+            console.log(spotifyStore.points)
+            document.getElementById('correct-incorrect').style.display = 'flex';
             document.getElementById('correct-incorrect__text').innerHTML = 'Correct!';
             document.getElementById('correct-incorrect__symbol').setAttribute('src', "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Green_tick_pointed.svg/1200px-Green_tick_pointed.svg.png");
             this.nextButton();
             this.disableButtonsCorrect(option);
         } else {
-            //paintCorrectOne
+            spotifyStore.substractPoint()
+            document.getElementById('correct-incorrect').style.display = 'flex';
             document.getElementById('correct-incorrect__text').innerHTML = 'Incorrect!';
-            document.getElementById('correct-incorrect__symbol').setAttribute('src', "https://i.dlpng.com/static/png/6658483_preview.png");
+            document.getElementById('correct-incorrect__symbol').setAttribute('src', "https://lh3.googleusercontent.com/proxy/xIgQz4ivhSNdcTcKHKUCKKFCppzlsyQ_h9_iDDqXAwXUWJ5YDcgU5LmPuiu0Z51qYj-pT5NjgKeBmgVe20h12logv8AQnbENonMpdA31idk0ceNl7snajt0qlNHdwbEp0Os_kwf2jetoLWIY2m-njkhA0VQJ3FGlEaAqxAe9erZosIK-cA");
             this.nextButton();
             this.disableButtonsIncorrect(option, correctSong);
         }
@@ -86,6 +90,7 @@ const quiz = new Quiz;
 
 (async () => {
     await spotifyStore.getToken();
+    let points = spotifyStore.points
     const playlistObj = await spotifyStore.getPlaylist(token, "0ddZALObYa8D1Zc4H1OX3U");
     let numOfSongs = playlistObj.tracks.items.length;
     let indexSong = quiz.randomNum(numOfSongs);
@@ -93,7 +98,7 @@ const quiz = new Quiz;
 
     let round = +window.location.search.replace('?round=','');
     document.getElementById("stats__round").innerHTML = `Round ${round}`;
-    document.getElementById("stats__points").innerHTML = `Points ${points}/${round-1}`;
+    document.getElementById("stats__points").innerHTML = `Points ${points}/${round ? round-1 : 0}`;
     document.getElementById('correct-incorrect__next-button').setAttribute('href',`./spotify.html?round=${round+1}`);
 
     document.getElementById('playlist').innerHTML = `(Playlist name: ${playlistObj.name})`;
@@ -110,8 +115,8 @@ const quiz = new Quiz;
     document.getElementById('option4').innerHTML = arrayOptions[3];
     let option4 = document.getElementById('option4').innerHTML;
 
-    document.getElementById('option1').addEventListener("click", function(){ quiz.checkAnswer(option1, correctSong);});
-    document.getElementById('option2').addEventListener("click", function(){ quiz.checkAnswer(option2, correctSong);});
-    document.getElementById('option3').addEventListener("click", function(){ quiz.checkAnswer(option3, correctSong);});
-    document.getElementById('option4').addEventListener("click", function(){ quiz.checkAnswer(option4, correctSong);});
+    document.getElementById('option1').addEventListener("click", function(){ quiz.checkAnswer(option1, correctSong, spotifyStore);});
+    document.getElementById('option2').addEventListener("click", function(){ quiz.checkAnswer(option2, correctSong, spotifyStore);});
+    document.getElementById('option3').addEventListener("click", function(){ quiz.checkAnswer(option3, correctSong, spotifyStore);});
+    document.getElementById('option4').addEventListener("click", function(){ quiz.checkAnswer(option4, correctSong, spotifyStore);});
 })()

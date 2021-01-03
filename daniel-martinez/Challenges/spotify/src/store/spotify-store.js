@@ -1,9 +1,20 @@
 const clientId = "41172bf845c04637b8fd1f2ec199a12c";
 const clientSecret = "30ef8a95af0a44df9af0da2785429282";
 let token;
-let points = 0;
 
 class SpotifyStore {
+    constructor() {
+        this.points = 0
+    }
+
+    addPoint() {
+        this.points += 1
+    }
+
+    substractPoint() {
+        this.points -= 1
+    }
+
     async getToken(){
         try {
             const response = await fetch ('https://accounts.spotify.com/api/token', {

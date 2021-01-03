@@ -10,11 +10,11 @@ body {
 .title {
 	display: flex;
 	align-items: center;
-	font-size: 25px;
+	font-size: 18px;
 }
 
 #title-logo {
-	width: 80px;
+	width: 30px;
 	margin: 15px;
 }
 
@@ -22,9 +22,9 @@ body {
 	position: fixed;
 	display: flex;
 	flex-direction: column;
-	top: 150px;
+	top: 120px;
 	margin-left: 30px;
-	font-size: 20px;
+	font-size: 18px;
 	font-weight: 500;
 }
 
@@ -37,6 +37,11 @@ body {
 	justify-content: center;
 }
 
+#album-img {
+	width: 250px;
+	height: 250px;
+}
+
 #options-list {
 	display: flex;
 	flex-direction: column;
@@ -46,12 +51,12 @@ body {
 }
 
 #options-list__question {
-	font-size: 30px;
+	font-size: 22px;
 }
 
 #options-list__first-row,
 #options-list__second-row {
-	margin-top: 20px;
+	margin-top: 25px;
 	display: flex;
 }
 
@@ -59,13 +64,15 @@ body {
 #option2,
 #option3,
 #option4 {
-	font-size: 18px;
-	width: 300px;
-	height: 86px;
+	font-size: 14px;
+	width: 250px;
+	height: 66px;
 	list-style: none;
 	border: 1px solid black;
 	border-radius: 2px;
-	padding: 20px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background-color: rgb(87, 181, 96);
 	color: white;
 	outline: none;
@@ -87,14 +94,29 @@ body {
 
 #playlist {
 	text-align: center;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 #correct-incorrect {
-	display: flex;
+	display: none;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 100px;
+	height: 300px;
+	width: 500px;
+	margin-left: -250px;
+	margin-top: -150px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: rgb(24,24,24);
+	border-radius: 3px;
+}
+
+#correct-incorrect__first-row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 #correct-incorrect__text {
