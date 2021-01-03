@@ -1,14 +1,12 @@
-# Skylab Bootcamp 202010
+# Skylab Bootcamp 202010 - Daniel Martínez
 
-> [Agile Manifesto](https://agilemanifesto.org/):
-> We are uncovering better ways of developing software by doing it and helping others do it.
+This is Daniel Martinez's personal repo with every project he made during his Skylab Coders Academy's Bootcamp.
 
 ## Required tools
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/)
 - [GitHub](http://github.com/)
-- [Trello](https://trello.com/)
 
 ## Recommended VSCode Extensions
 
